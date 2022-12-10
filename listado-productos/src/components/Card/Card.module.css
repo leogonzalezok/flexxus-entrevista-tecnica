@@ -1,7 +1,7 @@
 .card {
   width: 45%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   margin: 1em 0;
 }
@@ -41,4 +41,11 @@
 
 .description p {
   color: #757575;
+}
+
+
+@media (max-width: 900px) {
+  .card{
+    width: 100%;
+  }
 }
