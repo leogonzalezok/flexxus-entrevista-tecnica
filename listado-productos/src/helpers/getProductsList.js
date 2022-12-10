@@ -1,10 +1,8 @@
 import { stock } from "../db";
+import { types } from "../store/StoreReducer";
 
-export const getProductsList = () => {
-
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(stock);
-    }, 3000);
-  });
+const getProductsList = async (store, dispatch) => {
+  await dispatch({ type: types.productsStock, payload: [...stock] })
 }
+
+export default getProductsList

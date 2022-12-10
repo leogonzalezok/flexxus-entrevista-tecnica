@@ -1,5 +1,5 @@
 .searchBarContainer{
-  margin: 3em 0;
+  margin: 3em auto;
   width: 70%;
 }
 
@@ -46,4 +46,22 @@
 
 .btn .searchIcon{
   margin-right: 8.75px;
+}
+
+.label{
+  margin-top: 20px;
+  font-size: 14px;
+  width: fit-content;
+  padding: 3px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #343434;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.closeLabelBtn{
+  margin-left: 2px;
+  cursor: pointer;
 }

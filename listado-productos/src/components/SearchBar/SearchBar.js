@@ -1,14 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './SearchBar.module.css';
 import { AiOutlineSearch } from 'react-icons/ai'
+import { useSearch } from '../../hooks/useSearch';
+import { AiOutlineClose } from 'react-icons/ai';
+import { useDispatch, useStore } from '../../store/StoreProvider';
+import getProductsList from '../../helpers/getProductsList';
 
 const SearchBar = () => {
+  const store = useStore();
+  const dispatch = useDispatch();
+  const [ inputText, setInputText ] = useState('');
+  const { getProductsSearched } = useSearch();
+
+  function handleSearchBtn(){
+    getProductsList(store, dispatch);
+    getProductsSearched(inputText, store, dispatch);
+  }
+
+  function handleInputChange(e) {
+    setInputText(e.target.value);
+  }
+
+  function cleanInput() {
+    setInputText('');
+    getProductsSearched('', store, dispatch);
+  }
+
   return (
     <div className={styles.searchBarContainer}>
       <div className={styles.searchBar}>
-        <input className={styles.input}/>
-        <button className={styles.btn}><AiOutlineSearch className={styles.searchIcon}/>Buscar</button>
+
+        <input
+          placeholder='Busca un producto por nombre o código'
+          className={styles.input}
+          value={inputText}
+          onChange={e => handleInputChange(e)} />
+
+        <button onClick={ () => handleSearchBtn() } className={styles.btn}><AiOutlineSearch className={styles.searchIcon} />Buscar</button>
       </div>
+      {
+        inputText 
+        ? 
+        <div className={styles.label}>{ inputText }
+          <AiOutlineClose onClick={ () => cleanInput() } className={styles.closeLabelBtn}/>
+        </div>
+        : null
+      }
     </div>
   )
 }
