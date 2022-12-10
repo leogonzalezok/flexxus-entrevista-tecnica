@@ -12,7 +12,8 @@ const SearchBar = () => {
   const [ inputText, setInputText ] = useState('');
   const { getProductsSearched } = useSearch();
 
-  function handleSearchBtn(){
+  function handleSearchBtn(e){
+    e.preventDefault();
     getProductsList(store, dispatch);
     getProductsSearched(inputText, store, dispatch);
   }
@@ -28,7 +29,7 @@ const SearchBar = () => {
 
   return (
     <div className={styles.searchBarContainer}>
-      <div className={styles.searchBar}>
+      <form className={styles.searchBar}>
 
         <input
           placeholder='Busca un producto por nombre o código'
@@ -36,8 +37,8 @@ const SearchBar = () => {
           value={inputText}
           onChange={e => handleInputChange(e)} />
 
-        <button onClick={ () => handleSearchBtn() } className={styles.btn}><AiOutlineSearch className={styles.searchIcon} />Buscar</button>
-      </div>
+        <button type='submit' onClick={ (e) => handleSearchBtn(e) } className={styles.btn}><AiOutlineSearch className={styles.searchIcon} />Buscar</button>
+      </form>
       {
         inputText 
         ? 
