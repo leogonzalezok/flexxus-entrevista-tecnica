@@ -73,21 +73,21 @@ WHERE
 
 -- Calcula el sueldo mínimo de los empleados del departamento ‘Soporte’ --
 SELECT
-    MIN(sueldo)
+  MIN(sueldo)
 FROM
-    departamentos d
-JOIN empleados e ON
+  departamentos d
+  JOIN empleados e ON
     (d.id = e.departamento_id)
 WHERE
     d.denominacion = 'Soporte';
 
 -- Para cada puesto obtener la suma de sueldos. --
 SELECT
-	p.puesto,
-    SUM(sueldo) AS Suma
+  p.puesto,
+  SUM(sueldo) AS Suma
 FROM
-    empleados e
-JOIN puestos p ON
+  empleados e
+  JOIN puestos p ON
     p.id = e.puesto_id
 GROUP BY
     e.puesto_id;
