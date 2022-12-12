@@ -11,7 +11,7 @@ const Card = ( { product } ) => {
       <div className={styles.description}>
         <h3>{name}</h3>
         <p>{ id }</p>
-        <p> Precio: ${price} </p>
+        <p style={{ marginTop: '20px' }}> Precio: <b style={{ margin: '5px' }}>${price}</b> </p>
       </div>
     </div>
   )

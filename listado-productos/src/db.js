@@ -13,7 +13,7 @@ export const stock = [
     id: 'CODE002',
     name: 'NOTEBOOK ASUS X515MA INTEL CELERON N4020 8GB 240GB 15.6 FREE',
     desc: 'Ya sea para trabajar o jugar, el ASUS X515 es el computador portátil que ofrece un potente rendimiento y efectos visuales envolventes. Su pantalla NanoEdge cuenta con amplios ángulos de visión de 178° y un recubrimiento antirreflejos mate para tener una experiencia verdaderamente atractiva.',
-    price: 'CODE003',
+    price: 120250,
     img: 'https://www.venex.com.ar/products_images/1638814588_notebook-asus-x515ma-n4020-8gb-240gb-15.6-free.jpg',
     stock: 25
   },
