@@ -1,16 +1,16 @@
-import getProductsList from "../helpers/getProductsList";
-import { useDispatch, useStore } from "../store/StoreProvider";
+import { stock } from "../db";
+import { useDispatch } from "../store/StoreProvider";
 import { types } from "../store/StoreReducer";
 
 export const useSearch = () => {
 
-  const store = useStore();
   const dispatch = useDispatch();
-  
   async function getProductsSearched(input) {
-    await getProductsList(store, dispatch);
-    const { products } = store;
-    if (input === '') return;
+    const products = [...stock];
+
+    if (input === '') {
+      return dispatch({ type: types.productsFiltered, payload: products });
+    };
 
     const productsByCode = products.filter(
       item => item.id.includes(input.toUpperCase())
@@ -21,8 +21,7 @@ export const useSearch = () => {
     );
 
     const productsResult = [...productsByCode, ...productsByName];
-    await dispatch({ type: types.productsFiltered, payload: productsResult });
-
+    dispatch({ type: types.productsFiltered, payload: productsResult });
   }
 
   return {

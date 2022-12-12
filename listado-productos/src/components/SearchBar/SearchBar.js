@@ -14,7 +14,6 @@ const SearchBar = () => {
 
   function handleSearchBtn(e){
     e.preventDefault();
-    getProductsList(store, dispatch);
     getProductsSearched(inputText, store, dispatch);
   }
 
